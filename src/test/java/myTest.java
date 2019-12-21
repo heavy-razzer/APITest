@@ -11,8 +11,12 @@ public class myTest {
     @Test
     public void test() {
 
-        FileManager file1 = new FileManager("file1full.txt");
-        FileManager file2 = new FileManager("file2full.txt");
+        // Define name of files, located in '/files' directory
+        String fileOneName = "file1full.txt";
+        String fileTwoName = "file2full.txt";
+
+        FileManager file1 = new FileManager(fileOneName);
+        FileManager file2 = new FileManager(fileTwoName);
 
         String stringFromFile1;
         String stringFromFile2;
@@ -22,8 +26,15 @@ public class myTest {
             stringFromFile1 = file1.getNextLine();
             stringFromFile2 = file2.getNextLine();
 
-            if (stringFromFile1 == null || stringFromFile2 == null)
+            if (stringFromFile1 == null) {
+                System.out.println("End of file '" + fileOneName + "'");
                 break;
+            }
+
+            if (stringFromFile2 == null) {
+                System.out.println("End of file '" + fileTwoName + "'");
+                break;
+            }
 
             JSONObject js1 = getResponse(stringFromFile1);
             JSONObject js2 = getResponse(stringFromFile2);
