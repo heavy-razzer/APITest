@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+/*
+Class for all operations with data file: read, get data, handle errors
+ */
 public class FileManager {
 
     private BufferedReader bufferedReader;
