@@ -1,4 +1,4 @@
-package httpCommands;
+package managers;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -7,9 +7,12 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-public class HttpCommands {
+/*
+HTTP commands manager
+ */
+public class HttpManager {
 
-    public static JSONObject getResponceJSON(String path) {
+    public static JSONObject getResponse(String path) {
 
         try {
             HttpClient httpClient = HttpClientBuilder.create().build();
