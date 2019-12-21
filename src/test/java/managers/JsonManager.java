@@ -6,26 +6,29 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+/*
+Class with all functions to work with JSON from http response: converting to Map and comparison
+ */
 public class JsonManager {
 
     public static boolean compareJSons(JSONObject js1, JSONObject js2) {
 
         boolean result = false;
 
-        // Compare jsons string as is
-        if (js1.toString().equals(js2.toString()))
-            return true;
+        // Quick compare jsons strings as is
+        if (js1.toString().equals(js2.toString())) return true;
 
         // Build map from json
         Map jsMap1 = jsonToMap(js1);
         Map jsMap2 = jsonToMap(js2);
 
-        // If root items in maps is not the same, break: jsons are different for sure
+        // If root items in maps is not the same, break: jsons are different, no need to proceed
         if (jsMap1.entrySet().toArray().length != jsMap2.entrySet().toArray().length) return false;
 
         Object[] js1Array = jsMap1.entrySet().toArray();
         Object[] js2Array = jsMap2.entrySet().toArray();
 
+        /*
         System.out.println("---");
         for (Object arrayItem : js1Array) {
             System.out.println(arrayItem.toString());
@@ -36,8 +39,15 @@ public class JsonManager {
             System.out.println(arrayItem.toString());
         }
 
+         */
+
         return result;
     }
+
+    /*
+    TreeMap is used to have sorted map. It works slower than HashMap.
+    But to compare maps properly maps must be sorted (has same fields order)
+     */
 
     private static Map<Object, Object> jsonToMap(JSONObject json) throws JSONException {
 

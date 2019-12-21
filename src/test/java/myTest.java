@@ -20,15 +20,15 @@ public class myTest {
 
             stringFromFile1 = file1.getNextLine();
             stringFromFile2 = file2.getNextLine();
+
             if (stringFromFile1 == null || stringFromFile2 == null)
                 break;
 
             JSONObject js1 = getResponceJSON(stringFromFile1);
             JSONObject js2 = getResponceJSON(stringFromFile2);
-            String json1 = js1.toString();
-            String json2 = js2.toString();
-            System.out.println(json1);
-            System.out.println(json2);
+
+            System.out.println(js1.toString());
+            System.out.println(js2.toString());
 
             compareJSons(js1, js2);
 
