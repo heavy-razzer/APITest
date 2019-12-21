@@ -1,4 +1,6 @@
 import fileManager.FileManager;
+import httpCommands.HttpCommands;
+import org.json.JSONObject;
 import org.junit.Test;
 
 public class myTest {
@@ -18,7 +20,16 @@ public class myTest {
             stringFromFile2 = file2.getNextLine();
             if (stringFromFile1 == null || stringFromFile2 == null)
                 break;
-            System.out.println(stringFromFile1 + "    " + stringFromFile2);
+
+            JSONObject js1 = HttpCommands.getResponceJSON(stringFromFile1);
+            JSONObject js2 = HttpCommands.getResponceJSON(stringFromFile2);
+            String json1 = js1.toString();
+            String json2 = js2.toString();
+            System.out.println(json1);
+            System.out.println(json2);
+            System.out.println("===============");
+
+
         }
     }
 }
