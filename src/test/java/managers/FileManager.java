@@ -1,6 +1,6 @@
 package managers;
 
-import utils.Log;
+import org.junit.Assert;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class FileManager {
         try {
             bufferedReader = new BufferedReader(new java.io.FileReader(filePathString));
         } catch (FileNotFoundException e) {
-            Log.errLog("File '" + fileName + "' not found");
+            Assert.fail("File '" + fileName + "' not found");
         }
     }
 
