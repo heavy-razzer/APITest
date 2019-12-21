@@ -13,35 +13,23 @@ public class JsonManager {
 
     public static boolean compareJSons(JSONObject js1, JSONObject js2) {
 
-        boolean result = false;
+        if (js1 != null && js2 != null) {
 
-        // Quick compare jsons strings as is
-        if (js1.toString().equals(js2.toString())) return true;
+            // Quick compare jsons strings as is
+            if (js1.toString().equals(js2.toString())) return true;
 
-        // Build map from json
-        Map jsMap1 = jsonToMap(js1);
-        Map jsMap2 = jsonToMap(js2);
+            // Build map from json
+            Map jsMap1 = jsonToMap(js1);
+            Map jsMap2 = jsonToMap(js2);
 
-        // If root items in maps is not the same, break: jsons are different, no need to proceed
-        if (jsMap1.entrySet().toArray().length != jsMap2.entrySet().toArray().length) return false;
+            if (jsMap1.isEmpty() || jsMap2.isEmpty()) return false;
 
-        Object[] js1Array = jsMap1.entrySet().toArray();
-        Object[] js2Array = jsMap2.entrySet().toArray();
+            // If root items count in maps is not the same, break: jsons are different, no need to proceed
+            if (jsMap1.entrySet().toArray().length != jsMap2.entrySet().toArray().length) return false;
 
-        /*
-        System.out.println("---");
-        for (Object arrayItem : js1Array) {
-            System.out.println(arrayItem.toString());
-        }
-
-        System.out.println("---");
-        for (Object arrayItem : js2Array) {
-            System.out.println(arrayItem.toString());
-        }
-
-         */
-
-        return result;
+            return jsMap1.equals(jsMap2);
+        } else
+            return false;
     }
 
     /*
