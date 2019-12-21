@@ -12,8 +12,8 @@ public class myTest {
     public void test() {
 
         // Define name of files, located in '/files' directory
-        String fileOneName = "file1full.txt";
-        String fileTwoName = "file2full.txt";
+        String fileOneName = "file1.txt";
+        String fileTwoName = "file2.txt";
 
         // Load file reader
         FileManager file1 = new FileManager(fileOneName);
