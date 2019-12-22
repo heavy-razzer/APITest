@@ -1,3 +1,5 @@
+package test;
+
 import managers.FileManager;
 import objects.Colours;
 import org.json.JSONObject;
@@ -6,10 +8,10 @@ import org.junit.Test;
 import static managers.HttpManager.getResponse;
 import static managers.JsonManager.compareJSons;
 
-public class myTest {
+public class linkSetTest {
 
     @Test
-    public void test() {
+    public void executeCommandsFormFiles() {
 
         // Define name of files, located in '/files' directory
         String fileOneName = "file1.txt";
