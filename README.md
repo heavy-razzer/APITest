@@ -17,4 +17,7 @@
 - To run one test set from project, use `mvn -Dtest=*** test` , where '***' is name of test class (see previous item)
 
 Assumptions:
-- Framework will compare only JSONs. If request returned something else (or responce cant ne parsed to JSON), comparison result will be FALSE
+- Framework will compare only JSONs. If request returned something else (or response cant be parsed to JSON), comparison result will be FALSE
+
+Note:
+- No multi-threaded execution. Sorry.
