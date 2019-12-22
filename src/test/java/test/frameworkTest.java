@@ -10,6 +10,9 @@ import java.util.Map;
 import static managers.HttpManager.getResponse;
 import static managers.JsonManager.compareJSons;
 
+/*
+Tests for 'compareJSons' function, that compares two JSONs for equality
+ */
 public class frameworkTest {
 
     @Test
@@ -110,9 +113,9 @@ public class frameworkTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenJSONIsEmpty() {
+    public void shouldReturnFalseWhenOneJSONIsEmpty() {
 
-        System.out.println("Should Return False When JSON Is Empty");
+        System.out.println("Should Return False When One JSON Is Empty");
 
         JSONObject js1 = new JSONObject("{}");
         JSONObject js2 = new JSONObject();
@@ -166,7 +169,9 @@ public class frameworkTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenOneJSONHasAdditionaItem() {
+    public void shouldReturnFalseWhenOneJSONHasAdditionalItem() {
+
+        System.out.println("Should Return False When One JSON Has Additional Item");
 
         JSONObject js1 = new JSONObject();
         JSONObject js2 = new JSONObject();
@@ -180,7 +185,40 @@ public class frameworkTest {
         js2.put("third", "zxc");
         js2.put("fourth", "rty");
 
-        Assert.assertFalse("FAILED: Returned TRUE when one JSON has same fields as anouther, but with additional item", compareJSons(js1, js2));
+        Assert.assertFalse("FAILED: Returned TRUE when one JSON has same fields as another, but with additional item", compareJSons(js1, js2));
     }
 
+    @Test
+    public void shouldReturnFailWhenJSONsHasSameItemsWithDifferentValues() {
+
+        JSONObject js1 = new JSONObject();
+        JSONObject js2 = new JSONObject();
+
+        js1.put("first", "qwe");
+        js1.put("second", "asd");
+        js1.put("third", "zxc");
+
+        js2.put("first", "111");
+        js2.put("second", "222");
+        js2.put("third", "333");
+
+        Assert.assertFalse("FAILED: Returned TRUE when one JSON has same field names, but with different values", compareJSons(js1, js2));
+    }
+
+    @Test
+    public void shouldReturnFailWhenJSONsHasDifferentItemsWithSameValues() {
+
+        JSONObject js1 = new JSONObject();
+        JSONObject js2 = new JSONObject();
+
+        js1.put("first", "qwe");
+        js1.put("second", "asd");
+        js1.put("third", "zxc");
+
+        js2.put("111", "qwe");
+        js2.put("222", "asd");
+        js2.put("333", "zxc");
+
+        Assert.assertFalse("FAILED: Returned TRUE when one JSON has different item names, but with same values", compareJSons(js1, js2));
+    }
 }
