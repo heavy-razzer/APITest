@@ -34,7 +34,12 @@ public class JsonManager {
             // If root items count in maps is not the same, break: jsons are different, no need to proceed
             if (jsMap1.entrySet().toArray().length != jsMap2.entrySet().toArray().length) return false;
 
-            return jsMap1.equals(jsMap2);
+            boolean result = jsMap1.equals(jsMap2);
+
+            jsMap1.clear();
+            jsMap2.clear();
+
+            return result;
         } else
             // I assume, that two nulls are not the same responses
             return false;
@@ -42,7 +47,7 @@ public class JsonManager {
 
     /*
     TreeMap is used to have sorted map. It works slower than HashMap.
-    But to compare maps properly maps must be sorted (has same fields order)
+    But to compare maps properly maps should be sorted (has same fields order)
      */
 
     private static Map<Object, Object> jsonToMap(JSONObject json) throws JSONException {
