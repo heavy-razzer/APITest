@@ -15,3 +15,6 @@
 - To run test execute `mvn test`from command line (or launch from IDE)
 - There are two test sets in project: 'linkSetTest' to process links set from two files and 'frameworkTest' to test framework itself
 - To run one test set from project, use `mvn -Dtest=*** test` , where '***' is name of test class (see previous item)
+
+Assumptions:
+- Framework will compare only JSONs. If request returned something else (or responce cant ne parsed to JSON), comparison result will be FALSE
