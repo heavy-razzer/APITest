@@ -29,6 +29,7 @@ public class JsonManager {
 
             return jsMap1.equals(jsMap2);
         } else
+            // I assume, that two nulls are not the same responses
             return false;
     }
 
