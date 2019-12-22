@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static managers.HttpManager.getResponse;
 import static managers.JsonManager.compareJSons;
 
 public class frameworkTest {
@@ -120,7 +121,66 @@ public class frameworkTest {
         js2.put("second", "asd");
         js2.put("third", "zxc");
 
-        Assert.assertFalse("FAILED: Returned True when one JSOn is empty", compareJSons(js1, js2));
+        Assert.assertFalse("FAILED: Returned TRUE when one JSOn is empty", compareJSons(js1, js2));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenOneResponseIsNotJSON() {
+
+        System.out.println("Should Return False When Response Is Not JSON");
+
+        JSONObject js1 = new JSONObject();
+
+        js1.put("first", "qwe");
+        js1.put("second", "asd");
+        js1.put("third", "zxc");
+
+        JSONObject js2 = getResponse("https://www.yandex.ru");
+
+        Assert.assertFalse("FAILED: Returned TRUE when one response returned not json", compareJSons(js1, js2));
+    }
+
+    @Test
+    public void shouldReturnTrueWhenJSONsHasMultiLevelStructure() {
+
+        System.out.println("Should Return True When JSONs Has Multi Level Structure");
+
+        Map<Object, Object> map1 = new HashMap<>();
+        Map<Object, Object> map2 = new HashMap<>();
+        Map<Object, Object> map3 = new HashMap<>();
+
+        map1.put("name", "user1");
+        map1.put("age", "20");
+        map1.put("city", "Tallinn");
+
+        map2.put("name", "user1");
+        map2.put("age", "20");
+        map2.put("city", "Tallinn");
+
+        map3.put("item1", map1);
+        map3.put("item2", map2);
+
+        JSONObject js1 = new JSONObject(map3);
+
+        Assert.assertTrue("FAILED: Returned FALSE when one two multi-level JSONS are same ", compareJSons(js1, js1));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenOneJSONHasAdditionaItem() {
+
+        JSONObject js1 = new JSONObject();
+        JSONObject js2 = new JSONObject();
+
+        js1.put("first", "qwe");
+        js1.put("second", "asd");
+        js1.put("third", "zxc");
+
+        js2.put("first", "qwe");
+        js2.put("second", "asd");
+        js2.put("third", "zxc");
+        js2.put("fourth", "rty");
+
+        Assert.assertFalse("FAILED: Returned TRUE when one JSON has same fields as anouther, but with additional item", compareJSons(js1, js2));
     }
 
 }
