@@ -45,14 +45,26 @@ public class myTest {
             JSONObject js2 = getResponse(stringFromFile2);
 
             // In case you would like to display responses...
-            //System.out.println(js1.toString());
-            //System.out.println(js2.toString());
+            /*
+            if (js1 != null) {
+                System.out.println(js1.toString() + "\n");
+            } else {
+                System.out.println("Link 1 returned no JSON\n");
+            }
+            if (js2 != null) {
+                System.out.println(js2.toString() + "\n");
+            } else {
+                System.out.println("Link 2 returned no JSON\n");
+            }
+
+             */
 
             // Compare responses
+            String messageTemplate = Colours.CYAN.getValue() + stringFromFile1 + " %s " + Colours.CYAN.getValue() + stringFromFile2 + Colours.DEFAULT.getValue();
             if (compareJSons(js1, js2)) {
-                System.out.println(Colours.CYAN.getValue() + stringFromFile1 + Colours.GREEN.getValue() + " equals " + Colours.CYAN.getValue() + stringFromFile2 + Colours.DEFAULT.getValue());
+                System.out.println(String.format(messageTemplate, Colours.GREEN.getValue() + "equals"));
             } else {
-                System.out.println(Colours.CYAN.getValue() + stringFromFile1 + Colours.RED.getValue() + " not equals " + Colours.CYAN.getValue() + stringFromFile2 + Colours.DEFAULT.getValue());
+                System.out.println(String.format(messageTemplate, Colours.RED.getValue() + "not equals"));
             }
         }
     }
