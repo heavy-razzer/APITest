@@ -19,8 +19,15 @@ public class JsonManager {
             if (js1.toString().equals(js2.toString())) return true;
 
             // Build map from json
-            Map jsMap1 = jsonToMap(js1);
-            Map jsMap2 = jsonToMap(js2);
+            Map jsMap1;
+            Map jsMap2;
+            try {
+                jsMap1 = jsonToMap(js1);
+                jsMap2 = jsonToMap(js2);
+            } catch (JSONException e) {
+                System.out.println("JSON Exception");
+                return false;
+            }
 
             if (jsMap1.isEmpty() || jsMap2.isEmpty()) return false;
 
