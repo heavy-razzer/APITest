@@ -253,6 +253,23 @@ public class frameworkTest {
         JSONObject js1 = new JSONObject();
         js1.put("first", array1);
 
-        Assert.assertFalse("FAILED: Returned TRUE when JSONs has same fields with same arrays", compareJSons(js1, js1));
+        Assert.assertTrue("FAILED: Returned TRUE when JSONs has same fields with same arrays", compareJSons(js1, js1));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenJSONValuesHasSpaces() {
+
+        JSONObject js1 = new JSONObject();
+        JSONObject js2 = new JSONObject();
+
+        js1.put("first", "aaa");
+        js1.put("second", "bbb");
+        js1.put("third", "ccc");
+
+        js2.put("first", "  aaa");
+        js2.put("second", "bbb  ");
+        js2.put("third", "  ccc  ");
+
+        Assert.assertFalse("FAILED: Returned TRUE for JSONs, that a differs pnly by spaces around values", compareJSons(js1, js2));
     }
 }
