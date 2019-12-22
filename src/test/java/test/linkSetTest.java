@@ -8,6 +8,12 @@ import org.junit.Test;
 import static managers.HttpManager.getResponse;
 import static managers.JsonManager.compareJSons;
 
+/*
+Main Assignment test:
+- Process links from two files, one after another
+- Compare JSONs for each pair
+- Display result: JSONS equal or not
+ */
 public class linkSetTest {
 
     @Test
