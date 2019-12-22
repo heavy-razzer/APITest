@@ -23,6 +23,12 @@ public class linkSetTest {
         String fileOneName = "file1.txt";
         String fileTwoName = "file2.txt";
 
+        System.out.println("Run links set from '"
+                + Colours.PURPLE.getValue() + fileOneName + Colours.DEFAULT.getValue()
+                + "' and '"
+                + Colours.PURPLE.getValue() + fileTwoName + Colours.DEFAULT.getValue()
+                + "' and compare JSON results");
+
         // Load file reader
         FileManager file1 = new FileManager(fileOneName);
         FileManager file2 = new FileManager(fileTwoName);
