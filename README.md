@@ -8,6 +8,15 @@
 - JDK
 - Maven
 
+**Test scenario**
+A. Check links
+1. Get links pairs from two text files (included into project)
+2. Send http requests with these links
+3. Get responce
+4. If responses are JSONs, then compare it
+B. Self testing
+There are list of tests, that verify comparasion library working with different surce data
+
 **Usage:**
 - File with links are placed in 'files' folder
 - By default app uses "file1.txt" and "file2.txt", but you can change this in source code if needed
