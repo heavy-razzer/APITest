@@ -14,6 +14,8 @@ A. Check links
 2. Send http requests with these links
 3. Get responce
 4. If responses are JSONs, then compare it
+
+
 B. Self testing
 There are list of tests, that verify comparasion library working with different surce data
 
