@@ -9,7 +9,8 @@
 - Maven
 
 **Test scenario**
-A. Check links
+
+A. Check links from files
 1. Get links pairs from two text files (included into project)
 2. Send http requests with these links
 3. Get responce
